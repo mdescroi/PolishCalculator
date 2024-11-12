@@ -50,7 +50,7 @@ public class MyRPNParser implements RPNParser {
                        break;
                }
            }else{
-               throw new ParseException();
+               throw new ParseException("Expression Invalide");
            }
            i++;
         }

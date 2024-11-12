@@ -59,6 +59,9 @@ public class MyRPNParserTest {
         String expression = "5 +";
         rpnParser.parseAndDisplayResult(expression);
     }
-
+    @Test(expected = ParseException.class)
+    public void testParseExceptionWithInvalidCharacters() throws NotEnoughOperandsOnStackException, DivideByZeroException, ParseException {
+        rpnParser.parseAndDisplayResult("3 5 @"); // L'usage de '@' devrait lancer une ParseException
+    }
 
 }

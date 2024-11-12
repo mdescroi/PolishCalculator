@@ -153,4 +153,20 @@ public class MyCalculatorTest {
         calcSubStack.enterValue(23);
         assertEquals("The peek of the stack doesn't match",23,calcSubStack.displayValueOnTop(),1);
     }
+    @Test(expected = DivideByZeroException.class)
+    public void testDivideByZeroInCalculator() throws DivideByZeroException, NotEnoughOperandsOnStackException {
+        calcStack.enterValue(10);
+        calcStack.enterValue(0); // Valeur qui provoquera la division par zéro
+        calcStack.divide();
+    }
+    @Test(expected = NotEnoughOperandsOnStackException.class)
+    public void testSubtractNotEnoughOperandsWithMessage() throws NotEnoughOperandsOnStackException {
+        calcStack.enterValue(10);
+        calcStack.subtract();
+    }
+    @Test(expected = NotEnoughOperandsOnStackException.class)
+    public void testMultiplyNotEnoughOperands() throws NotEnoughOperandsOnStackException {
+        calcStack.enterValue(10);
+        calcStack.multiply(); // Doit lancer une exception car il manque un opérande
+    }
 }
